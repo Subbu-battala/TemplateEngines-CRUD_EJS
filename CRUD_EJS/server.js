@@ -8,6 +8,9 @@ const PORT = process.env.PORT
 
 const app = express()
 
+// view folder static
+app.use(express.static('./view'))
+
 //template engine settings
 app.set('view engine', 'ejs')
 app.set('views', './view')
