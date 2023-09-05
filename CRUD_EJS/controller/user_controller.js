@@ -72,8 +72,22 @@ let singleUser = async (req,res) => {
 //api - update user (patch)
 let updateUser = async (req,res) => {
     try {
+        let id = req.params.id
+
+         // check if email exists
+         let extEmail = await User.findOne({ email: req.body.email })
+         if(extEmail)
+             return res.status(400).json({ msg: `${req.body.email} already exists` })
+         // check if mobile number exists
+         let extMobile = await User.findOne({ mobile: req.body.mobile })
+         if(extMobile)
+             return res.status(400).json({ msg: `${req.body.mobile} already exists` })
+
+             await User.findByIdAndUpdate({_id: id}, req.body)
+
+                res.status(200).json({ msg: " user info updated successfully" })
         
-        res.json({ msg: "update  User" })
+        
     }catch(err) {
         return res.status(500).json({ msg: err.message })
     }
@@ -82,7 +96,16 @@ let updateUser = async (req,res) => {
 //api - delete user (delete)
 let deleteUser = async (req,res) => {
     try {
-        res.json({ msg: "delete User" })
+
+        let id = req.params.id
+
+        let extUser = await User.findById({ _id: id })
+            if(!extUser)
+                return res.status(404).json({ msg: "Requested id not found" })
+
+                await User.findByIdAndDelete({ _id: id })
+
+        res.status(200).json({ msg: "User info deleted successfully" })
     }catch(err) {
         return res.status(500).json({ msg: err.message })
     }
