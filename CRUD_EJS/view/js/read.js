@@ -30,25 +30,25 @@ function printData(data) {
                                 <span class="text-success float-end">${item.email}</span>
                             </li>
                             <li class="list-group-item">
-                                <strong>Email</strong>
+                                <strong>mobile</strong>
                                 <span class="text-success float-end">${item.mobile}</span>
                             </li>
                             <li class="list-group-item">
-                                <strong>Email</strong>
+                                <strong>gender</strong>
                                 <span class="text-success float-end">${item.gender}</span>
                             </li>
                             <li class="list-group-item">
-                                <strong>Email</strong>
+                                <strong>qualification</strong>
                                 <span class="text-success float-end">${item.qualification}</span>
                             </li>
                             <li class="list-group-item">
-                                <strong>Email</strong>
+                                <strong>Address</strong>
                                 <span class="text-success float-end">${item.address}</span>
                             </li>
                         </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="/users/edit?id=${item._id}" class="btn btn-success" >Edit</a>
+                    <a href="/user/edit?id=${item._id}" class="btn btn-success" >Edit</a>
                     <button onClick="deleteUser('${item._id}')" class="btn btn-danger">Delete</button>
                 </div>
                 </div>
